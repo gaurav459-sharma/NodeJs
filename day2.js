@@ -1,3 +1,4 @@
+//Day2
 
 const fs=require('fs');
 const input=process.argv;

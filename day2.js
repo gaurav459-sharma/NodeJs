@@ -16,7 +16,7 @@ const fs=require('fs');
 const path=require('path');
 const dirPath=path.join(__dirname,'files');
 for(let i=0;i<5;i++){
-    fs.unlinkSync(dirPath+"/prog"+i+".txt",'this is program file')
+    fs.writeFileSync(dirPath+"/prog"+i+".txt",'this is program file')
 }
 fs.readdir(dirPath,(error,file)=>{
     // console.log(file)

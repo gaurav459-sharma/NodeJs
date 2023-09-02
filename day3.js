@@ -37,7 +37,7 @@ const file_path=`${dir_path}/temp.txt`
 // buffer is basicaly the memory required to run a file means nodejs required some memory to execute a file and this memory called a buffer
 
 // synchronous -> synchronous are those language which have to wait for the execution of another process to complete ex- php
-// asynchronous-> In asynchronous the process happened parallel and does not wait like if any process take more time then another process start executing the does not wait for the process and complete when it finished ex- javascipt,node.js
+// asynchronous-> In asynchronous the process happened parallel and does not wait like if any process take more time then another process start executing and does not wait for the process and complete when it finished ex- javascipt,node.js
 
 // console.log("executing1")
 // setTimeout(()=>{
@@ -45,19 +45,19 @@ const file_path=`${dir_path}/temp.txt`
 // },2000)
 
 // console.log("executing3")
-// let a=10,b=5
+let a=10,b=5
 
 
-// let waitingdata=new Promise((resolve,reject)=>{
-//     setTimeout(() => {
-//         // b=20;
-//         resolve(20);
-//     }, 2000);
-// })
-// waitingdata.then((data)=>{
-//     b=data;
-//     console.log(a+b);
-// })
+let waitingdata=new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        // b=20;
+        resolve(20);
+    }, 2000);
+})
+waitingdata.then((data)=>{
+    b=data;
+    console.log(a+b);
+})
 
 
 //     let first_promise = new Promise((resolve, reject) => resolve("Hello"));
@@ -82,14 +82,14 @@ const file_path=`${dir_path}/temp.txt`
 //                                          |               |
 //                                          |               |                                                        
 //                                         callback      queue         
-console.log('executing 1') 
+// console.log('executing 1') 
 
-setTimeout(() => {
-    console.log('executing 2')
-}, 2000);
+// setTimeout(() => {
+//     console.log('executing 2')
+// }, 2000);
 
-setTimeout(()=>{
-    console.log('executing 3')  //this is executing after priting executing 4 becuase it will send into node api and after node api and in node api it select the minimum time process and then send into the callback queue now,and waiting for the empty callstack and if it become empty the this process execute .
-},0)
+// setTimeout(()=>{
+//     console.log('executing 3')  //this is executing after priting executing 4 becuase it will send into node api and after node api and in node api it select the minimum time process and then send into the callback queue now,and waiting for the empty callstack and if it become empty the this process execute .
+// },0)
 
-console.log('executing 4')
+// console.log('executing 4')

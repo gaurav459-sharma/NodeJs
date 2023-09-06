@@ -44,7 +44,7 @@ route.get("/about", (req, resp) => {
     resp.send("Welcome to about page");
 })
 
-//and add one extra line to use this
+//and add one extra line to use the route
 app.use('/',route)
 
 

@@ -1,24 +1,72 @@
 const express=require('express')
-require('./config')
-const Product=require('./product')
+const multer=require('multer')
 
 const app=express();
-app.use(express.json())
 
-//search Api with multiple field
-
-app.get("/search/:key",async (req,resp)=>{
-    // resp.send("hello")
-    let data = await Product.find(
-        {
-            "$or":[
-                {"mobile":{$regex:req.params.key}},
-                {"brand":{$regex:req.params.key}}
-            ]
+const upload=multer({
+    storage:multer.diskStorage({
+        destination:function(req,file,cb){
+            cb(null,"uploads")
+        },
+        filename:function (req, file,cb){
+            cb(null,file.fieldname + "-"+ Date.now()+ ".png")
         }
-    )
-    resp.send(data);
-})
+
+    })
+}).single("user_file")
+
+app.post("/upload",upload ,(req,resp)=>{
+    
+});
+
+app.listen(1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// require('./config')
+// const Product=require('./product')
+
+// const app=express();
+// app.use(express.json())
+
+// //search Api with multiple field
+
+// app.get("/search/:key",async (req,resp)=>{
+//     // resp.send("hello")
+//     let data = await Product.find(
+//         {
+//             "$or":[
+//                 {"mobile":{$regex:req.params.key}},  
+//                 {"brand":{$regex:req.params.key}}
+//             ]
+//         }
+//     )
+//     resp.send(data);
+// })
 
 
 
